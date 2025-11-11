@@ -127,3 +127,20 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[gpg]
+	format = ssh
+[gpg "x509"]
+	program = smimesign
+[user]
+	signingkey = /Users/kinu/.ssh/id_ed25519.pub
+	email = kinu@meta.com
+	name = Xinyu Ma
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

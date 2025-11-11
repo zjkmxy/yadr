@@ -1,3 +1,30 @@
 source $HOME/.zprezto/runcoms/zshrc
 
 for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file
+
+# Created by `pipx` on 2025-04-22 23:23:34
+export PATH="$PATH:/Users/kinu/.local/bin"
+export FBANDROID_DIR=/Users/kinu/fbsource
+alias quicklog_update=/Users/kinu/fbsource/scripts/quicklog/quicklog_update.sh
+alias qlu=quicklog_update
+alias t='arc test'
+
+# RBENV
+eval "$(rbenv init -)"
+
+# pnpm
+export PNPM_HOME="/Users/kinu/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
